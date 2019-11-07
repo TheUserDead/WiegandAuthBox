@@ -25,25 +25,18 @@ void setup() {
   Serial.begin(115200);
   delay(1000);
   pinMode(13, OUTPUT);
-//  pinMode(5, OUTPUT);
-//  pinMode(6, OUTPUT); 
+  pinMode(5, OUTPUT);
+  pinMode(6, OUTPUT); 
   pinMode(relay, OUTPUT);
   digitalWrite(relay, LOW);    // Make sure door is locked
   digitalWrite(5, LOW); //indication stuff
   digitalWrite(6, LOW);
 
   //Protocol Configuration
-  
-  //SPI.begin();           // MFRC522 Hardware uses SPI protocol
+          
   wg.begin();
   mySwitch.enableTransmit(9);
   Serial.println(F("Access Control v1.1"));   // For debugging purposes
-  // ShowReaderDetails(); // Show details of PCD - MFRC522 Card Reader details
-
-  // Check if master card defined, if not let user choose a master card
-  // This also useful to just redefine Master Card
-  // You can keep other EEPROM records just write other than 143 to EEPROM address 1
-  // EEPROM address 1 should hold magical number which is '143'
 
   if (EEPROM.read(1) != 143) {
 
@@ -75,7 +68,6 @@ void setup() {
   Serial.println(F("Waiting ID's to be scanned"));
   digitalWrite(5, 0);
   digitalWrite(6, 1);
-  // cycleLeds();    // Everything ready lets give user some feedback by cycling leds
   
 }
 
