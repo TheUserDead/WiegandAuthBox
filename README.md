@@ -19,6 +19,7 @@ The device is created for other autonomic Attendance&access controller ZD2F20.
 It's used for attendance but device open door relay for every scan. I need open other door just only for special users.
 ZD2F20 has WG interface where i can read scanned fingerprint/card and define access to something like storage. Others just register their attendance. It's userful if attendance scanner standalone can't be used for register time and access to storage places at the same time for different users.
 Or It's just wiegand controller, and you need just WG reader externally installed outside.
+
 -Wiring picture included and you can see image below-
 
 ## RUS
@@ -45,5 +46,5 @@ EEPROM (Встроенная библиотека)
 Данное устройство является самостаятельным и законченным. Его можно использовать как контроллер доступа, просто установив wiegand считыватель снаружи. Так же можно доработать под свои нужды (Arduino, open source же!) 
 
 **Wiring / Схема подключения**
-![Schematic](https://github.com/TheUserDead/WiegandAuthBox/blob/master/Schematic_WiegandAuthBox_Sheet_1_20200126003924.png)
+![Schematic](https://github.com/TheUserDead/WiegandAuthBox/blob/master/Schematic_WiegandAuthBox_Sheet_1_20200126005045.png)
 
