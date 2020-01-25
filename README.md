@@ -19,7 +19,7 @@ The device is created for other autonomic Attendance&access controller ZD2F20.
 It's used for attendance but device open door relay for every scan. I need open other door just only for special users.
 ZD2F20 has WG interface where i can read scanned fingerprint/card and define access to something like storage. Others just register their attendance. It's userful if attendance scanner standalone can't be used for register time and access to storage places at the same time for different users.
 Or It's just wiegand controller, and you need just WG reader externally installed outside.
-**(Wiring schematic add ASAP)**
+-Wiring picture included and you can see image below-
 
 ## RUS
 Wiegand авторизатор на 250 пользователей. Основан на адаптированном скетче-примере для модуля RC522 и немного доработан.
@@ -43,7 +43,7 @@ EEPROM (Встроенная библиотека)
 При сканировании внутреннее реле отрабатывало всем зарегистрированным пользователям что не удобно, так как вход в основное помещение свободно, а в техническое должно быть только особым ID.
 Так как ZD2F20 имеет интерфейс Wiegand, было разработанно устройство которое считывало текущий ID по Wiegand от устройства сканирования сверяло со своей базой пользователей и при совпадении открывало дверь в тех помещение. Возможно наработка вам пригодится.
 Данное устройство является самостаятельным и законченным. Его можно использовать как контроллер доступа, просто установив wiegand считыватель снаружи. Так же можно доработать под свои нужды (Arduino, open source же!) 
-**(Схема подключения будет загружена по возможности)**
 
-
+**Wiring / Схема подключения**
+![Schematic](https://github.com/TheUserDead/WiegandAuthBox/blob/master/Schematic_WiegandAuthBox_Sheet_1_20200126003924.png)
 
