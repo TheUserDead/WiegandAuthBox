@@ -10,6 +10,7 @@ WIEGAND wg;
 RCSwitch mySwitch = RCSwitch();
 
 #define relay 4      // Set Relay Pin
+const int extcomm = 8;      // ext command open
 
 boolean match = false;          // initialize card match to false
 boolean programMode = false;  // initialize programming mode to false
@@ -27,6 +28,7 @@ void setup() {
   pinMode(13, OUTPUT);
   pinMode(5, OUTPUT);
   pinMode(6, OUTPUT); 
+  pinMode(extcomm, INPUT); 
   pinMode(relay, OUTPUT);
   digitalWrite(relay, LOW);    // Make sure door is locked
   digitalWrite(5, LOW); //indication stuff
@@ -87,9 +89,11 @@ int getID() {
   return 0; 
 }
 
+//////////////////////////LOOP/////////////////////////
 void loop() {
 
   do {
+    extopen();
     successRead = getID();  // sets successRead to 1 when we get read from reader otherwise 0
     if (programMode) {
       // cycleLeds();              // Program Mode cycles through RGB waiting to read a new card
@@ -112,7 +116,7 @@ void loop() {
       //  normalModeOn();     // Normal mode, blue Power LED is on, all others are off
   digitalWrite(5, 0);
   digitalWrite(6, 0);
-      if (digitalRead(10) == 1) clearKeys();
+      // if (digitalRead(10) == 1) clearKeys();
     }
   }
   while (!successRead);   //the program will not go further while you not get a successful read
@@ -165,10 +169,16 @@ void loop() {
     }
   }
   for(int i = 0; i<4; i++){readCard[i] = 0;} //clear for normal use, otherwise it go loop cause it's think this card scanned again!
-
+ 
 
 }
 
+void extopen(){
+  if (digitalRead(extcomm) == 1) {
+  Serial.println(F("External command: open"));
+  granted(400);
+}
+}
 /////////////////////////////////////////  Access Granted    ///////////////////////////////////
 void granted (int setDelay) {
   //  digitalWrite(blueLed, LED_OFF);   // Turn off blue LED
